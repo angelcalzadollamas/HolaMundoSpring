@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<!-- Para poder hacerla página dinámica añadimos xmlns conectando a la página de thymeleaf -->
+<html xmlns="http://www.thymeleaf.org">
+	<head>
+		<title>Pagina inicio</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device=width, intial-scale=1.0">
+	</head>
+	<body>
+		<header th:replace="plantilla/plantilla.html :: encabezado"></header>
+		<a th:href="@{/anexar}">Alta individuo</a>
+		<div th:if="${individuos != null and !individuos.empty}">
+			<table border="2">
+				<tr>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Edad</th>
+					<th>Correo</th>
+					<th>Telefono</th>
+					<th>Modificar</th>
+					<th>Eliminar</th>
+				</tr>	
+				<tr th:each="individuo : ${individuos}">
+					<td th:text="${individuo.nombre}">Muestra nombre</td>
+					<td th:text="${individuo.apellido}">Muestra apellido</td>
+					<td th:text="${individuo.edad}">Muestra edad</td>
+					<td th:text="${individuo.correo}">Muestra correo</td>
+					<td th:text="${individuo.telefono}">Muestra telefono</td>
+					<td> <a th:href="@{/modificar/} + ${individuo.idIndividuo}" th:text="modificar"/></td>
+					<td> <a th:href="@{/eliminar(idIndividuo=${individuo.idIndividuo})}" th:text="eliminar"/></td>
+				</tr>
+			</table>
+		</div>
+		<div th:if="${individuos == null or individuos.empty}">
+			La lista no tiene información
+		</div>
+		
+		<footer th:replace="plantilla/plantilla.html :: piepagina"></footer>
+		
+	</body>
+</html>
