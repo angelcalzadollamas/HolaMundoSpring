@@ -6,10 +6,10 @@
 	</head>
 	<body>
 		<header th:fragment="encabezado">
-			<h1>Control Consumidor</h1>
+			<h1 th:text="#{pagina.titulo}">Control Consumidor</h1>
 		</header>
 		<footer th:fragment="piepagina">
-			<p>Creado por Ángel Calzado Llamas siguiendo tutorial: 
+			<p> [[#{pagina.pie-de-pagina}]] 
 				<a href="https://www.youtube.com/playlist?list=PLCIjncxyvEHbSAhlMhSrMROJtg1s_tlG8" target="_blank">
 					Java y Spring boot
 				</a>

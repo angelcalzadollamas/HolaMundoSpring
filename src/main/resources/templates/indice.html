@@ -9,17 +9,17 @@
 	</head>
 	<body>
 		<header th:replace="plantilla/plantilla.html :: encabezado"></header>
-		<a th:href="@{/anexar}">Alta individuo</a>
+		<a th:href="@{/anexar}">[[#{individuo.anexar}]]</a>
 		<div th:if="${individuos != null and !individuos.empty}">
 			<table border="2">
 				<tr>
-					<th>Nombre</th>
-					<th>Apellido</th>
-					<th>Edad</th>
-					<th>Correo</th>
-					<th>Telefono</th>
-					<th>Modificar</th>
-					<th>Eliminar</th>
+					<th>[[#{individuo.nombre}]]</th>
+					<th>[[#{individuo.apellido}]]</th>
+					<th>[[#{individuo.edad}]]</th>
+					<th>[[#{individuo.correo}]]</th>
+					<th>[[#{individuo.telefono}]]</th>
+					<th>[[#{boton.modificar}]]</th>
+					<th>[[#{boton.borrar}]]</th>
 				</tr>	
 				<tr th:each="individuo : ${individuos}">
 					<td th:text="${individuo.nombre}">Muestra nombre</td>
@@ -33,7 +33,7 @@
 			</table>
 		</div>
 		<div th:if="${individuos == null or individuos.empty}">
-			La lista no tiene información
+			[[#{individuo.lista-sin-info}]]
 		</div>
 		
 		<footer th:replace="plantilla/plantilla.html :: piepagina"></footer>
